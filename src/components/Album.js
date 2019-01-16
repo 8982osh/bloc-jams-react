@@ -13,7 +13,8 @@ class Album extends Component {
     this.state = {
       album: album,
       currentSong: album.songs[0],
-      isPlaying: false
+      isPlaying: false,
+      isHovered: false
     }; 
 
     this.audioElement = document.createElement('audio');
@@ -22,7 +23,7 @@ class Album extends Component {
 
   play() {
     this.audioElement.play();
-    this.setState({ isPlaying: true });
+    this.setState({ isPlaying: true }); 
   }
 
   pause() {
@@ -45,6 +46,33 @@ class Album extends Component {
     }
   }
 
+  onHover(song) {
+    this.setState({isHovered: song});
+  }
+
+  offHover(song){
+    this.setState({isHovered: false});
+  }
+
+  /* change icons for hover on and off */
+  songIcon(song,index){
+    /* display pause if play displayed */
+    if(song == this.state.isHovered){
+      if(song == this.state.currentSong && this.state.isPlaying){
+        return (<span className="ion-md-pause"></span>);
+      } else {
+        return (<span className="ion-md-play"></span>);
+      } 
+    } else {
+      if(song == this.state.currentSong && this.state.isPlaying){
+        return (<span className="ion-md-pause"></span>);
+      } else {
+        return (index+1) 
+      }
+    }
+  }
+   
+ 
 
   render() {
   	return (
@@ -66,10 +94,15 @@ class Album extends Component {
   	       <tbody>
   	        {
   	         this.state.album.songs.map( (song, index) =>
-	  	  	     <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-  	           <td id="song-num-row">{index + 1}</td>
-               <td id="song-title-row">{song.title}</td>
-               <td id="song-duration-row">{song.duration}</td>
+	  	  	     <tr className="song" key={index} onClick={() => this.handleSongClick(song)} 
+  	             
+                 onMouseEnter={() => this.onHover(song)} 
+                 onMouseLeave={() => this.offHover(song)} 
+               >
+                 <td id="song-num-row">{this.songIcon(song,index)}</td>
+                 <td id="song-title-row">{song.title}</td>
+                 <td id="song-duration-row">{song.duration}</td>
+                 
               </tr>
               )
             }
