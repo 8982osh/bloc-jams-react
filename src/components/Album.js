@@ -24,6 +24,18 @@ class Album extends Component {
     this.audioElement.src = album.songs[0].audioSrc;  
   }
 
+  /* change time format to M:SS and default for non-numberic */
+  formatTime(currentTime) {
+    if (isNAN(currentTime)) {
+      return "-:--" /* default for non-numeric value */
+    }else{
+      var d = new Date.currentTime();
+      var minutes = d.getMinutes();
+      var seconds = d.getSeconds();
+      this.setState(currentTime="{minutes}:{seconds}"); 
+    }
+  }
+
   /* update seek bar on playback */
   componentDidMount() {
     this.eventListeners = {
