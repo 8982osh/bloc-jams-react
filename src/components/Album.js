@@ -15,6 +15,7 @@ class Album extends Component {
       album: album,
       currentSong: album.songs[0],
       currentTime: 0,
+      currentVolume: 0, 
       duration: album.songs[0].duration,
       isPlaying: false,
       isHovered: false
@@ -26,14 +27,21 @@ class Album extends Component {
 
   /* change time format to M:SS and default for non-numberic */
   formatTime(currentTime) {
-    if (isNAN(currentTime)) {
+    if (currentTime = isNaN) {
       return "-:--" /* default for non-numeric value */
     }else{
       var d = new Date.currentTime();
       var minutes = d.getMinutes();
       var seconds = d.getSeconds();
-      this.setState(currentTime="{minutes}:{seconds}"); 
+      return currentTime="${minutes}:${seconds}"; 
     }
+  }
+
+  /* display current volume */
+  handleVolumeChange (e) {
+    const newVolume = this.audioElement.volume * e.target.value;
+    this.audioElement.currentVolume = newVolume;
+    this.setState({ currentVolume: newVolume }); 
   }
 
   /* update seek bar on playback */
@@ -178,6 +186,8 @@ class Album extends Component {
            handlePrevClick={() => this.handlePrevClick()}
            handleNextClick={() => this.handleNextClick()}
            handleTimeChange={(e) => this.handleTimeChange(e)}
+           formatTime={(currentTime) => this.formatTime(currentTime)}
+           handleVolumeChange={(e) => this.handleVolumeChange(e)}
          />
   	  </section>
   	);
