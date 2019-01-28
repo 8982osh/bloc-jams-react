@@ -16,24 +16,26 @@ class Album extends Component {
       currentSong: album.songs[0],
       currentTime: 0,
       currentVolume: 0, 
+      volume: 0.5,
       duration: album.songs[0].duration,
       isPlaying: false,
       isHovered: false
     }; 
 
     this.audioElement = document.createElement('audio');
-    this.audioElement.src = album.songs[0].audioSrc;  
+    this.audioElement.src = album.songs[0].audioSrc;
+    this.audioElement.currentVolume = 0;
+    this.audioElement.volume = 0.5; 
   }
 
-  /* change time format to M:SS and default for non-numberic */
+  /* change time format to M:SS and default for non-numeric */
   formatTime(currentTime) {
-    if (currentTime = isNaN) {
+    if (currentTime == isNaN) {
       return "-:--" /* default for non-numeric value */
     }else{
-      var d = new Date.currentTime();
-      var minutes = d.getMinutes();
-      var seconds = d.getSeconds();
-      return currentTime="${minutes}:${seconds}"; 
+      let minutes = currentTime/60;
+      let seconds = currentTime%60;
+      return minutes.toFixed(0)+':'+ seconds.toFixed(0); // remove nums after decimal
     }
   }
 
@@ -170,7 +172,7 @@ class Album extends Component {
                >
                  <td id="song-num-row">{this.songIcon(song,index)}</td>
                  <td id="song-title-row">{song.title}</td>
-                 <td id="song-duration-row">{song.duration}</td>
+                 <td id="song-duration-row">{this.formatTime(song.duration)}</td>
                  
               </tr>
               )
@@ -181,14 +183,17 @@ class Album extends Component {
            isPlaying={this.state.isPlaying} 
            currentSong={this.state.currentSong} 
            currentTime={this.audioElement.currentTime}
+           currentVolume={this.audioElement.currentVolume}
+           volume={this.audioElement.volume}
            duration={this.audioElement.duration}
            handleSongClick={() => this.handleSongClick(this.state.currentSong)}
            handlePrevClick={() => this.handlePrevClick()}
            handleNextClick={() => this.handleNextClick()}
            handleTimeChange={(e) => this.handleTimeChange(e)}
-           formatTime={(currentTime) => this.formatTime(currentTime)}
+           formatTime={this.formatTime(this.audioElement.currentTime)} 
            handleVolumeChange={(e) => this.handleVolumeChange(e)}
          />
+      
   	  </section>
   	);
   }
