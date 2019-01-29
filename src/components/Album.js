@@ -185,7 +185,7 @@ class Album extends Component {
            currentTime={this.audioElement.currentTime}
            currentVolume={this.audioElement.currentVolume}
            volume={this.audioElement.volume}
-           duration={this.audioElement.duration}
+           duration={this.formatTime(this.audioElement.duration)}
            handleSongClick={() => this.handleSongClick(this.state.currentSong)}
            handlePrevClick={() => this.handlePrevClick()}
            handleNextClick={() => this.handleNextClick()}
