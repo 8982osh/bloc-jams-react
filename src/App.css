@@ -1,32 +1,116 @@
-.App {
+
+.jumbotron {
+  height: 300px;
+}
+
+.container-fluid {
+  margin-bottom: 100px;
+  padding-bottom: 100px;
+}
+
+.bloc-jams {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+/* Navigation styling */
+.navbar.navbar-expand-lg {
+  background-color: #9900cc; /* purple */
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.nav-link {
+  color: #FFFFFF; /* white */
+  text-decoration: bold;
+  font-size: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar-brand {
+  color: #FFFFFF; /* white */
+  text-decoration: bold;
+  font-size: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Landing pg panel styling */
+.landing-title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 40px;
 }
+
+.panel {
+  border: 1px solid #9900cc; /* purple */
+  border-radius:0;
+  transition: box-shadow 0.5s;
+}
+
+.panel:hover {
+  box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+.panel-heading {
+  color: #FFFFFF;
+  background-color: #9900cc; /* purple */
+  padding: 25px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.panel-body {
+  height: 300px;
+  padding-top: 100px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.panel-footer {
+  background-color: #9900cc; /* purple */ 
+  height: 40px;
+}
+
+
+/* Library styling */
+.img-responsive.center-block {
+  height: 400px;
+  width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.album-title {
+  font-size: 30px;
+  text-align: center;
+  padding-top: 50px;
+  color: #000000;
+}
+
+.album-info {
+  font-size: 20px;
+  text-align: center;
+  color: #000000;
+}
+
+.footer {
+  height: 40px;
+  font-size: 20px;
+  font-style: bold;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #9900cc; /* purple */ 
+  margin-top: 50px; 
+}
+
+/* Album styling*/
+
+.playerbar-info {
+  text-align: center;
+}
+
+.center-table {
+  margin: 0px auto;
+}
+
+

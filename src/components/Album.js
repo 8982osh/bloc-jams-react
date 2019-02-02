@@ -147,16 +147,15 @@ class Album extends Component {
 
   render() {
   	return (
+      <div className="playerbar-info">
   	  <section className="albums">
   	    <section id="album-info">
-  	      <img id="album-cover-art" src={this.state.album} alt={this.state.album}/>
-  	      <div className="album-details">
+  	      <img id="album-cover-art" src={this.state.albumCover} alt={this.state.albumCover}/>
   	        <h1 id="album-title">{this.state.album.title}</h1>
   	        <h2 className="artist">{this.state.album.artist}</h2>
   	        <div id="release-info">{this.state.album.releaseInfo}</div>
-  	      </div>
-  	     </section>
-  	     <table id="song-list">
+  	    </section>
+  	     <table className="center-table">
   	       <colgroup>
   	         <col id="song-number-column" />
   	         <col id="song-title-column" />
@@ -170,6 +169,7 @@ class Album extends Component {
                  onMouseEnter={() => this.onHover(song)} 
                  onMouseLeave={() => this.offHover(song)} 
                >
+                 
                  <td id="song-num-row">{this.songIcon(song,index)}</td>
                  <td id="song-title-row">{song.title}</td>
                  <td id="song-duration-row">{this.formatTime(song.duration)}</td>
@@ -195,6 +195,7 @@ class Album extends Component {
          />
       
   	  </section>
+      </div>
   	);
   }
 }
